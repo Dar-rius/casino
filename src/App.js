@@ -5,22 +5,18 @@ import {useState} from 'react'
 function App() {
 
   //value for player
-  const [value, setValue] = useState(0)
+  const [valueRoul, setValueRoul] = useState(0)
   
   //value money for player
   const [money, setMoney] = useState(0)
-
-  //variables for the numbre roulette
-  const min = 0
-  const max = 50
   
   //random variable for roulette
-  let roulette = Math.floor(Math.random() * (max - min)) + min 
+  const [roulette, setRoulette] = useState(0)
 
   //random variable for bots
-  let bot1 = Math.floor(Math.random() * (max-min)) + min
-  let bot2 = Math.floor(Math.random() * (max-min)) + min
-  let bot3 = Math.floor(Math.random() * (max-min)) + min
+  const [bot1, setBot1] = useState(0)
+  const [bot2, setBot2] = useState(0)
+  const [bot3, setBot3] = useState(0)
 
   //money for bots and player
   const botMoney1 = 3000
@@ -28,14 +24,42 @@ function App() {
   const botMoney3 = 3000
   const playerMoney = 3000 
 
-  //variable for money bot
-  const minMoney = 1
-  const maxMoney = 3000
-
   //random value for money bots
-  let botMoneyRandom1 = Math.floor(Math.random() * (maxMoney-minMoney)) + minMoney
-  let botMoneyRandom2 = Math.floor(Math.random() * (maxMoney-minMoney)) + minMoney
-  let botMoneyRandom3 = Math.floor(Math.random() * (maxMoney-minMoney)) + minMoney
+  const [botMoneyRandom1, setBotMoneyRandom1] = useState(0)
+  const [botMoneyRandom2, setBotMoneyRandom2] = useState(0)
+  const [botMoneyRandom3, setBotMoneyRandom3] = useState(0)
+
+  let valueRoulFinal = 0
+  let moneyFinal = 0
+
+
+  //function for start game:
+  const start = () => {
+    //variables for the numbre roulette
+    const min = 0
+    const max = 50
+
+    //variable for money bot
+    const minMoney = 1
+    const maxMoney = 3000
+
+    //random variable for bots
+      setBot1(Math.floor(Math.random() * (max-min)) + min)
+      setBot2(Math.floor(Math.random() * (max-min)) + min)
+      setBot3(Math.floor(Math.random() * (max-min)) + min)
+
+    //random value for money bots
+    setBotMoneyRandom1(Math.floor(Math.random() * (maxMoney-minMoney)) + minMoney)
+    setBotMoneyRandom2(Math.floor(Math.random() * (maxMoney-minMoney)) + minMoney)
+    setBotMoneyRandom3(Math.floor(Math.random() * (maxMoney-minMoney)) + minMoney)
+
+    //random variable for roulette
+    setRoulette(Math.floor(Math.random() * (max - min)) + min)
+
+    valueRoulFinal = setValueRoul
+    moneyFinal = setMoney
+  }
+
 
   return (
     <main>
@@ -70,12 +94,16 @@ function App() {
       <div class='player'>
         <p>Player</p>
         <p>{playerMoney}</p>
+        <p>{moneyFinal}</p>
+        <p>{valueRoulFinal}</p>
         <input value={money} name="valueMoney" onChange={e=> setMoney(e.target.money)}/>
-        <input value={value} name="valueRoulette" onChange={e=> setValue(e.target.value)}/>
+        <input value={valueRoul} name="valueRoulette" onChange={e=> setValueRoul(e.target.valueRoul)}/>
       </div>
 
       <footer>
-        <button>start</button>
+        <button onClick={start}>
+          start
+        </button>
         <button>restart</button>
       </footer>
     </main>
