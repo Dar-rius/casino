@@ -19,10 +19,10 @@ function App() {
   const [bot3, setBot3] = useState(0)
 
   //money for bots and player
-  const botMoney1 = 3000
-  const botMoney2 = 3000
-  const botMoney3 = 3000
-  const playerMoney = 3000 
+  const [botMoney1, setBotMoney1] = useState(3000)
+  const [botMoney2, setBotMoney2] = useState(3000)
+  const [botMoney3, setBotMoney3] = useState(3000)
+  const [playerMoney, setPlayerMoney] = useState(3000)
 
   //random value for money bots
   const [botMoneyRandom1, setBotMoneyRandom1] = useState(0)
@@ -38,7 +38,6 @@ function App() {
 
     //variable for money bot
     const minMoney = 1
-    const maxMoney = 3000
 
     //random variable for bots
       setBot1(Math.floor(Math.random() * (max-min)) + min)
@@ -46,12 +45,31 @@ function App() {
       setBot3(Math.floor(Math.random() * (max-min)) + min)
 
     //random value for money bots
-    setBotMoneyRandom1(Math.floor(Math.random() * (maxMoney-minMoney)) + minMoney)
-    setBotMoneyRandom2(Math.floor(Math.random() * (maxMoney-minMoney)) + minMoney)
-    setBotMoneyRandom3(Math.floor(Math.random() * (maxMoney-minMoney)) + minMoney)
+    setBotMoneyRandom1(Math.floor(Math.random() * (botMoney1-minMoney)) + minMoney)
+    setBotMoneyRandom2(Math.floor(Math.random() * (botMoney2-minMoney)) + minMoney)
+    setBotMoneyRandom3(Math.floor(Math.random() * (botMoney3-minMoney)) + minMoney)
 
     //random variable for roulette
     setRoulette(Math.floor(Math.random() * (max - min)) + min)
+
+    //random for money
+    setBotMoney1(botMoney1-botMoneyRandom1)
+    setBotMoney2(botMoney2-botMoneyRandom2)
+    setBotMoney3(botMoney3-botMoneyRandom3)
+    setPlayerMoney(playerMoney-money)
+
+    if(bot2 == roulette){
+      setBotMoney2(playerMoney+botMoney1+botMoney2+botMoney3)
+    }
+    else if(bot1 == roulette){
+      setBotMoney1(botMoney1+botMoney2+botMoney3+playerMoney)
+    }
+    else if(bot3 == roulette){
+      setBotMoney3(botMoney1+botMoney2+botMoney3+playerMoney)
+    }
+    else {
+      setPlayerMoney(playerMoney+botMoney1+botMoney2+botMoney3)
+    }
 
   }
 
