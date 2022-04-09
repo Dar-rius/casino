@@ -29,9 +29,6 @@ function App() {
   const [botMoneyRandom2, setBotMoneyRandom2] = useState(0)
   const [botMoneyRandom3, setBotMoneyRandom3] = useState(0)
 
-  let valueRoulFinal = 0
-  let moneyFinal = 0
-
 
   //function for start game:
   const start = () => {
@@ -56,8 +53,6 @@ function App() {
     //random variable for roulette
     setRoulette(Math.floor(Math.random() * (max - min)) + min)
 
-    valueRoulFinal = setValueRoul
-    moneyFinal = setMoney
   }
 
 
@@ -94,10 +89,10 @@ function App() {
       <div class='player'>
         <p>Player</p>
         <p>{playerMoney}</p>
-        <p>{moneyFinal}</p>
-        <p>{valueRoulFinal}</p>
-        <input value={money} name="valueMoney" onChange={e=> setMoney(e.target.money)}/>
-        <input value={valueRoul} name="valueRoulette" onChange={e=> setValueRoul(e.target.valueRoul)}/>
+        <p>{money}</p>
+        <p>{valueRoul}</p>
+        <input value={money} name="valueMoney" onChange={e=> setMoney(e.target.value)}/>
+        <input value={valueRoul} name="valueRoulette" onChange={e=> setValueRoul(e.target.value)}/>
       </div>
 
       <footer>
