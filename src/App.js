@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import {useState} from 'react'
 
+
 function App() {
 
   //value for player
@@ -52,25 +53,46 @@ function App() {
     //random variable for roulette
     setRoulette(Math.floor(Math.random() * (max - min)) + min)
 
-    //random for money
-    setBotMoney1(botMoney1-botMoneyRandom1)
-    setBotMoney2(botMoney2-botMoneyRandom2)
-    setBotMoney3(botMoney3-botMoneyRandom3)
-    setPlayerMoney(playerMoney-money)
+    //condition for lose
+    if(bot2 != roulette){
+      setBotMoney2(botMoney2)
+    }
+    if(bot3 != roulette){
+      setBotMoney3(botMoney3)
+    }
+    if(bot1 != roulette){
+      setBotMoney1(botMoney1)
+    }
+    if(valueRoul != roulette){
+      setPlayerMoney(playerMoney)
+    }
 
     //condition for win
     if(bot2 == roulette){
       setBotMoney2(playerMoney+botMoneyRandom1+botMoneyRandom2+botMoneyRandom3)
+      setBotMoney3(botMoney3-botMoneyRandom3)
+      setPlayerMoney(playerMoney-money)
+      setBotMoney1(botMoney1-botMoneyRandom1)
     }
     else if(bot1 == roulette){
       setBotMoney1(botMoneyRandom1+botMoneyRandom2+botMoneyRandom3+playerMoney)
+      setBotMoney2(botMoney2-botMoneyRandom2)
+      setBotMoney3(botMoney3-botMoneyRandom3)
+      setPlayerMoney(playerMoney-money)
     }
     else if(bot3 == roulette){
       setBotMoney3(botMoneyRandom1+botMoneyRandom2+botMoneyRandom3+playerMoney)
+      setBotMoney1(botMoney1-botMoneyRandom1)
+      setBotMoney2(botMoney2-botMoneyRandom2)
+      setPlayerMoney(playerMoney-money)
     }
     else if (valueRoul == roulette){
       setPlayerMoney(playerMoney+botMoneyRandom1+botMoneyRandom2+botMoneyRandom3)
+      setBotMoney1(botMoney1-botMoneyRandom1)
+      setBotMoney2(botMoney2-botMoneyRandom2)
+      setBotMoney3(botMoney3-botMoneyRandom3)
     }
+
 
   }
 
