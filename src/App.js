@@ -152,7 +152,7 @@ function App() {
         <div class='bot3'>
           <p>Bot 3</p>
           <p>Amount: {botMoney3} $</p>
-          <p>Bet {botMoneyRandom3} $</p>
+          <p>Bet: {botMoneyRandom3} $</p>
           <p>Number: {bot3}</p>
         </div>
       </div>
@@ -174,7 +174,7 @@ function App() {
       <footer>
         <button 
         onClick={start}
-        disabled={money === 0  || playerMoney === 0 }>
+        disabled={money === 0  || playerMoney === 0 || playerMoney < money || valueRoul > 50 }>
           start
         </button>
         {
@@ -183,6 +183,12 @@ function App() {
           
           playerMoney === 12000 &&
             <p class='para'>You're winner</p> ||
+          
+          playerMoney < money &&
+            <p class='para'>Error value</p> ||
+
+          valueRoul > 50 &&
+            <p class='para'>Error value roulette</p> ||
 
           playerMoney !== 0 &&
             <p class='para'>Round: {round}</p> ||
