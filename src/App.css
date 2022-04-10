@@ -6,15 +6,57 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 7.5%;
+  margin-bottom: 3%;
 }
 
 .player{
   text-align: center;
+  padding-bottom: 2%;
 }
 
 footer{
   padding-top: 0.5%;
   display: flex;
   justify-content: space-around;
+  background-color: #515A5A;
+  align-items: center;
+  padding-bottom: 2.5%;
+}
+
+main{
+  background-color: #283747;
+  color: #45B39D;
+  font-size: 17px;
+}
+
+p{
+  text-align: center;
+}
+
+.roulette{
+  background-color: #AAB7B8;
+  color: #17202A;
+  padding-left: 2%;
+  padding-right: 2%;
+}
+
+button{
+  padding: 0.6%;
+  padding-left: 1.5%;
+  padding-right: 1.5%;
+  font-size: large;
+  background-color: #45B39D;
+  font-weight: bold;
+}
+
+input{
+  margin: 2%;
+}
+
+.bot2{
+  padding-left: 1%;
+}
+
+.bot3{
+  padding-right: 1%;
 }

@@ -54,25 +54,25 @@ function App() {
     setRoulette(Math.floor(Math.random() * (max - min)) + min)
 
     //condition for win
-    if(bot2 == roulette){
+    if(bot2 === roulette){
       setBotMoney2(playerMoney+botMoneyRandom1+botMoneyRandom2+botMoneyRandom3)
       setBotMoney3(botMoney3-botMoneyRandom3)
       setPlayerMoney(playerMoney-money)
       setBotMoney1(botMoney1-botMoneyRandom1)
     }
-    else if(bot1 == roulette){
+    else if(bot1 === roulette){
       setBotMoney1(botMoneyRandom1+botMoneyRandom2+botMoneyRandom3+playerMoney)
       setBotMoney2(botMoney2-botMoneyRandom2)
       setBotMoney3(botMoney3-botMoneyRandom3)
       setPlayerMoney(playerMoney-money)
     }
-    else if(bot3 == roulette){
+    else if(bot3 === roulette){
       setBotMoney3(botMoneyRandom1+botMoneyRandom2+botMoneyRandom3+playerMoney)
       setBotMoney1(botMoney1-botMoneyRandom1)
       setBotMoney2(botMoney2-botMoneyRandom2)
       setPlayerMoney(playerMoney-money)
     }
-    else if (valueRoul == roulette){
+    else if (valueRoul === roulette){
       setPlayerMoney(playerMoney+botMoneyRandom1+botMoneyRandom2+botMoneyRandom3)
       setBotMoney1(botMoney1-botMoneyRandom1)
       setBotMoney2(botMoney2-botMoneyRandom2)
@@ -81,15 +81,15 @@ function App() {
 
 
     //bot finish
-    if(botMoney2 == 0){
+    if(botMoney2 === 0){
       setBot2(0)
       setBotMoney2(0)
     }
-    if(botMoney1 == 0){
+    if(botMoney1 === 0){
       setBot1(0)
       setBotMoney1(0)
     }
-    if(botMoney3 == 0){
+    if(botMoney3 === 0){
       setBot3(0)
       setBotMoney3(0)
     }
@@ -121,7 +121,7 @@ function App() {
   }
 
 
-  return (
+  return <>
     <main>
       <div class='bot1'>
         <p>Bot1</p>
@@ -139,7 +139,6 @@ function App() {
         </div>
 
         <div class='roulette'>
-          <p>Roulette</p>
           <p>{roulette}</p>
         </div>
 
@@ -163,19 +162,20 @@ function App() {
           onChange={e=> setValueRoul(e.target.value)}
           />
       </div>
+    </main>
 
       <footer>
-        <button onClick={start}
-        disabled={playerMoney == 0}>
+        <button 
+        onClick={start}
+        disabled={money === 0  || playerMoney === 0 }>
           start
         </button>
         
         <button
           onClick={restart}
-          disabled={playerMoney != 0}>restart</button>
+          disabled={playerMoney !== 0}>restart</button>
       </footer>
-    </main>
-  );
+  </>
 }
 
 export default App;
