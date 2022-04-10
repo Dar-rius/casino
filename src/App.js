@@ -53,20 +53,6 @@ function App() {
     //random variable for roulette
     setRoulette(Math.floor(Math.random() * (max - min)) + min)
 
-    //condition for lose
-    if(bot2 != roulette){
-      setBotMoney2(botMoney2)
-    }
-    if(bot3 != roulette){
-      setBotMoney3(botMoney3)
-    }
-    if(bot1 != roulette){
-      setBotMoney1(botMoney1)
-    }
-    if(valueRoul != roulette){
-      setPlayerMoney(playerMoney)
-    }
-
     //condition for win
     if(bot2 == roulette){
       setBotMoney2(playerMoney+botMoneyRandom1+botMoneyRandom2+botMoneyRandom3)
@@ -108,6 +94,30 @@ function App() {
       setBotMoney3(0)
     }
 
+  }
+
+    
+  const restart = () =>{
+    //random variable for bots
+    setBot1(0)
+    setBot2(0)
+    setBot3(0)
+
+    //random value for money bots
+    setBotMoneyRandom1(0)
+    setBotMoneyRandom2(0)
+    setBotMoneyRandom3(0)
+    setMoney(0)
+
+    //random variable for roulette
+    setRoulette(0)
+
+    setPlayerMoney(3000)
+    setBotMoney1(3000)
+    setBotMoney2(3000)
+    setBotMoney3(3000)
+
+    setValueRoul(0)
   }
 
 
@@ -159,8 +169,10 @@ function App() {
         disabled={playerMoney == 0}>
           start
         </button>
+        
         <button
-        disabled={playerMoney != 0}>restart</button>
+          onClick={restart}
+          disabled={playerMoney != 0}>restart</button>
       </footer>
     </main>
   );
