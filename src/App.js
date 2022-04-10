@@ -58,17 +58,18 @@ function App() {
     setBotMoney3(botMoney3-botMoneyRandom3)
     setPlayerMoney(playerMoney-money)
 
+    //condition for win
     if(bot2 == roulette){
-      setBotMoney2(playerMoney+botMoney1+botMoney2+botMoney3)
+      setBotMoney2(playerMoney+botMoneyRandom1+botMoneyRandom2+botMoneyRandom3)
     }
     else if(bot1 == roulette){
-      setBotMoney1(botMoney1+botMoney2+botMoney3+playerMoney)
+      setBotMoney1(botMoneyRandom1+botMoneyRandom2+botMoneyRandom3+playerMoney)
     }
     else if(bot3 == roulette){
-      setBotMoney3(botMoney1+botMoney2+botMoney3+playerMoney)
+      setBotMoney3(botMoneyRandom1+botMoneyRandom2+botMoneyRandom3+playerMoney)
     }
-    else {
-      setPlayerMoney(playerMoney+botMoney1+botMoney2+botMoney3)
+    else if (valueRoul == roulette){
+      setPlayerMoney(playerMoney+botMoneyRandom1+botMoneyRandom2+botMoneyRandom3)
     }
 
   }
