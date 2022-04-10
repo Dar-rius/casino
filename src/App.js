@@ -5,6 +5,9 @@ import {useState} from 'react'
 
 function App() {
 
+  //variable round
+  const [round, setRound] = useState(0)
+
   //value for player
   const [valueRoul, setValueRoul] = useState(0)
   
@@ -94,6 +97,8 @@ function App() {
       setBotMoney3(0)
     }
 
+    setRound(round + 1)
+
   }
 
     
@@ -118,24 +123,26 @@ function App() {
     setBotMoney3(3000)
 
     setValueRoul(0)
+
+    setRound(0)
   }
 
 
   return <>
     <main>
       <div class='bot1'>
-        <p>Bot1</p>
-        <p>{botMoney1}</p>
-        <p>{botMoneyRandom1}</p>
-        <p>{bot1}</p>
+        <p>Bot 1</p>
+        <p>Amount: {botMoney1} $</p>
+        <p>Bet: {botMoneyRandom1} $</p>
+        <p>Number: {bot1}</p>
       </div>
 
       <div class='sec'>
         <div class='bot2'>
-          <p>Bot2</p>
-          <p>{botMoney2}</p>
-          <p>{botMoneyRandom2}</p>
-          <p>{bot2}</p>
+          <p>Bot 2</p>
+          <p>Amount: {botMoney2} $</p>
+          <p>Bet: {botMoneyRandom2} $</p>
+          <p>Number: {bot2}</p>
         </div>
 
         <div class='roulette'>
@@ -143,18 +150,18 @@ function App() {
         </div>
 
         <div class='bot3'>
-          <p>Bot3</p>
-          <p>{botMoney3}</p>
-          <p>{botMoneyRandom3}</p>
-          <p>{bot3}</p>
+          <p>Bot 3</p>
+          <p>Amount: {botMoney3} $</p>
+          <p>Bet {botMoneyRandom3} $</p>
+          <p>Number: {bot3}</p>
         </div>
       </div>
 
       <div class='player'>
         <p>Player</p>
-        <p>{playerMoney}</p>
-        <p>{money}</p>
-        <p>{valueRoul}</p>
+        <p>Amount: {playerMoney} $</p>
+        <p>Bet: {money} $</p>
+        <p>Number: {valueRoul}</p>
         <input value={money} name="valueMoney" onChange={e=> setMoney(e.target.value)}/>
         <input 
           value={valueRoul} 
@@ -170,10 +177,34 @@ function App() {
         disabled={money === 0  || playerMoney === 0 }>
           start
         </button>
-        
+        {
+          playerMoney === 0 &&
+            <p class='para'>You've lose</p> ||
+          
+          playerMoney === 12000 &&
+            <p class='para'>You're winner</p> ||
+
+          playerMoney !== 0 &&
+            <p class='para'>Round: {round}</p> ||
+          
+          playerMoney !== 12000 &&
+            <p class='para'>Round: {round}</p> ||
+
+          botMoney1 === 12000 &&
+            <p class='para'>You've lose</p> ||
+
+          botMoney2 === 12000 &&
+            <p class='para'>You've lose</p> ||
+
+          botMoney3 === 12000 &&
+            <p class='para'>You've lose</p>
+        }
         <button
           onClick={restart}
-          disabled={playerMoney !== 0}>restart</button>
+          disabled={playerMoney !== 0
+          || botMoney1 === 12000
+          || botMoney2 === 12000
+          || botMoney3 === 12000}>restart</button>
       </footer>
   </>
 }
