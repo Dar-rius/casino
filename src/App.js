@@ -94,6 +94,20 @@ function App() {
     }
 
 
+    //bot finish
+    if(botMoney2 == 0){
+      setBot2(0)
+      setBotMoney2(0)
+    }
+    if(botMoney1 == 0){
+      setBot1(0)
+      setBotMoney1(0)
+    }
+    if(botMoney3 == 0){
+      setBot3(0)
+      setBotMoney3(0)
+    }
+
   }
 
 
@@ -133,14 +147,20 @@ function App() {
         <p>{money}</p>
         <p>{valueRoul}</p>
         <input value={money} name="valueMoney" onChange={e=> setMoney(e.target.value)}/>
-        <input value={valueRoul} name="valueRoulette" onChange={e=> setValueRoul(e.target.value)}/>
+        <input 
+          value={valueRoul} 
+          name="valueRoulette" 
+          onChange={e=> setValueRoul(e.target.value)}
+          />
       </div>
 
       <footer>
-        <button onClick={start}>
+        <button onClick={start}
+        disabled={playerMoney == 0}>
           start
         </button>
-        <button>restart</button>
+        <button
+        disabled={playerMoney != 0}>restart</button>
       </footer>
     </main>
   );
