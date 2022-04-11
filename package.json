@@ -2,7 +2,7 @@
   "name": "tkingame",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://dar-rius.github.io/react-gh-pages",
+  "homepage": "https://dar-rius.github.io/casino/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^12.1.4",
