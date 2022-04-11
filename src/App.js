@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import {useState} from 'react'
 
@@ -179,17 +178,17 @@ function App() {
         disabled={money === 0 
         || playerMoney <= 0 
         || valueRoul > 50
-        || botMoney1 === 0
+        || (botMoney1 === 0
         && botMoney2 === 0
-        && botMoney3 === 0 }>
+        && botMoney3 === 0) }>
           start
         </button>
         {
-           valueRoul > 50 &&
-            <p class='para'>Error value roulette</p> ||
+           (valueRoul > 50 &&
+            <p class='para'>Error value roulette</p>) ||
 
-          playerMoney !== 0 &&
-            <p class='para'>Round: {round}</p>
+          (playerMoney !== 0 &&
+            <p class='para'>Round: {round}</p>)
         }
         <button
           onClick={restart}>restart</button>
