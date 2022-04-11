@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/casino/static/css/main.c8fad830.css",
+    "main.js": "/casino/static/js/main.a6318b8b.js",
+    "static/js/787.d8230f56.chunk.js": "/casino/static/js/787.d8230f56.chunk.js",
+    "index.html": "/casino/index.html",
+    "main.c8fad830.css.map": "/casino/static/css/main.c8fad830.css.map",
+    "main.a6318b8b.js.map": "/casino/static/js/main.a6318b8b.js.map",
+    "787.d8230f56.chunk.js.map": "/casino/static/js/787.d8230f56.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c8fad830.css",
+    "static/js/main.a6318b8b.js"
+  ]
+}
