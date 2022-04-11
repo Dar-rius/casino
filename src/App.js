@@ -81,7 +81,6 @@ function App() {
       setBotMoney2(botMoney2-botMoneyRandom2)
       setBotMoney3(botMoney3-botMoneyRandom3)
       setPlayerMoney(playerMoney - money)
-
     }
 
     else if(bot2 === roulette){
@@ -94,7 +93,6 @@ function App() {
       setBotMoney1(botMoney1-botMoneyRandom1)
       setBotMoney2(botMoney2-botMoneyRandom2)
       setPlayerMoney(playerMoney - money)
-
     }
 
     setRound(round + 1)
@@ -178,9 +176,8 @@ function App() {
       <footer>
         <button 
         onClick={start}
-        disabled={playerMoney === 0 
-        || money >= 2000 
-        || playerMoney < money 
+        disabled={money === 0 
+        || playerMoney <= 0 
         || valueRoul > 50
         || botMoney1 === 0
         && botMoney2 === 0
@@ -195,11 +192,7 @@ function App() {
             <p class='para'>Round: {round}</p>
         }
         <button
-          onClick={restart}
-          disabled={playerMoney !== 0
-          && botMoney1 !== 0
-          && botMoney2 !== 0
-          && botMoney3 !== 0}>restart</button>
+          onClick={restart}>restart</button>
       </footer>
   </>
 }
