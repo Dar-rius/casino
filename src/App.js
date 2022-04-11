@@ -23,10 +23,10 @@ function App() {
   const [bot3, setBot3] = useState(0)
 
   //money for bots and player
+  const [playerMoney, setPlayerMoney] = useState(3000)
   const [botMoney1, setBotMoney1] = useState(3000)
   const [botMoney2, setBotMoney2] = useState(3000)
   const [botMoney3, setBotMoney3] = useState(3000)
-  const [playerMoney, setPlayerMoney] = useState(3000)
 
   //random value for money bots
   const [botMoneyRandom1, setBotMoneyRandom1] = useState(0)
@@ -77,20 +77,20 @@ function App() {
       setBotMoney3(botMoney3-botMoneyRandom3)
     }
 
-    if(bot1 === roulette){
+    else if(bot1 === roulette){
       setBotMoney2(botMoney2-botMoneyRandom2)
       setBotMoney3(botMoney3-botMoneyRandom3)
       setPlayerMoney(playerMoney - money)
 
     }
 
-    if(bot2 === roulette){
+    else if(bot2 === roulette){
       setBotMoney3(botMoney3-botMoneyRandom3)
       setBotMoney1(botMoney1-botMoneyRandom1)
       setPlayerMoney(playerMoney - money)
     }
 
-    if(bot3 === roulette){
+    else if(bot3 === roulette){
       setBotMoney1(botMoney1-botMoneyRandom1)
       setBotMoney2(botMoney2-botMoneyRandom2)
       setPlayerMoney(playerMoney - money)
@@ -179,6 +179,7 @@ function App() {
         <button 
         onClick={start}
         disabled={playerMoney === 0 
+        || money >= 2000 
         || playerMoney < money 
         || valueRoul > 50
         || botMoney1 === 0
