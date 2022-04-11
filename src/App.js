@@ -44,56 +44,57 @@ function App() {
     const minMoney = 1
 
     //random variable for bots
+    if(botMoney1 === 0){
+      setBotMoney1(0)
+    }
+
+    else if(botMoney2 === 0 ){
+      setBotMoney2(0)
+    }
+
+    else if(botMoney3 === 0 ){
+      setBotMoney3(0)
+    }
+
+    else {
       setBot1(Math.floor(Math.random() * (max-min)) + min)
       setBot2(Math.floor(Math.random() * (max-min)) + min)
       setBot3(Math.floor(Math.random() * (max-min)) + min)
+    }
+
+      //random variable for roulette
+      setRoulette(Math.floor(Math.random() * (max - min)) + min)
 
     //random value for money bots
     setBotMoneyRandom1(Math.floor(Math.random() * (botMoney1-minMoney)) + minMoney)
     setBotMoneyRandom2(Math.floor(Math.random() * (botMoney2-minMoney)) + minMoney)
     setBotMoneyRandom3(Math.floor(Math.random() * (botMoney3-minMoney)) + minMoney)
 
-    //random variable for roulette
-    setRoulette(Math.floor(Math.random() * (max - min)) + min)
-
     //condition for win
-    if(bot2 === roulette){
-      setBotMoney2(playerMoney+botMoneyRandom1+botMoneyRandom2+botMoneyRandom3)
-      setBotMoney3(botMoney3-botMoneyRandom3)
-      setPlayerMoney(playerMoney-money)
-      setBotMoney1(botMoney1-botMoneyRandom1)
-    }
-    if(bot1 === roulette){
-      setBotMoney1(botMoneyRandom1+botMoneyRandom2+botMoneyRandom3+playerMoney)
-      setBotMoney2(botMoney2-botMoneyRandom2)
-      setBotMoney3(botMoney3-botMoneyRandom3)
-      setPlayerMoney(playerMoney-money)
-    }
-    if(bot3 === roulette){
-      setBotMoney3(botMoneyRandom1+botMoneyRandom2+botMoneyRandom3+playerMoney)
-      setBotMoney1(botMoney1-botMoneyRandom1)
-      setBotMoney2(botMoney2-botMoneyRandom2)
-      setPlayerMoney(playerMoney-money)
-    }
     if (valueRoul === roulette){
-      setPlayerMoney(playerMoney+botMoneyRandom1+botMoneyRandom2+botMoneyRandom3)
       setBotMoney1(botMoney1-botMoneyRandom1)
       setBotMoney2(botMoney2-botMoneyRandom2)
       setBotMoney3(botMoney3-botMoneyRandom3)
     }
 
+    if(bot1 === roulette){
+      setBotMoney2(botMoney2-botMoneyRandom2)
+      setBotMoney3(botMoney3-botMoneyRandom3)
+      setPlayerMoney(playerMoney - money)
 
-    //bot finish
-    if(botMoney2 === 0 && botMoney2 === 0){
-      setBot2(0)
     }
 
-    if(botMoney1 === 0 && botMoney1 === 0){
-      setBotMoney1(0)
+    if(bot2 === roulette){
+      setBotMoney3(botMoney3-botMoneyRandom3)
+      setBotMoney1(botMoney1-botMoneyRandom1)
+      setPlayerMoney(playerMoney - money)
     }
 
-    if(botMoney3 === 0 && botMoney3 === 0){
-      setBotMoney3(0)
+    if(bot3 === roulette){
+      setBotMoney1(botMoney1-botMoneyRandom1)
+      setBotMoney2(botMoney2-botMoneyRandom2)
+      setPlayerMoney(playerMoney - money)
+
     }
 
     setRound(round + 1)
@@ -139,7 +140,7 @@ function App() {
       <div class='sec'>
         <div class='bot2'>
           <p>Bot 2</p>
-          <p>Amount: {botMoney2} $</p>
+          {<p>Amount: {botMoney2} $</p>}
           <p>Bet: {botMoneyRandom2} $</p>
           <p>Number: {bot2}</p>
         </div>
@@ -177,40 +178,27 @@ function App() {
       <footer>
         <button 
         onClick={start}
-        disabled={money === 0 || playerMoney < money || valueRoul > 50 }>
+        disabled={playerMoney === 0 
+        || playerMoney < money 
+        || valueRoul > 50
+        || botMoney1 === 0
+        && botMoney2 === 0
+        && botMoney3 === 0 }>
           start
         </button>
         {
-          money === 0 &&
-            <p class='para'>You've lose</p> ||
-          
-          playerMoney === 12000 &&
-            <p class='para'>You're winner</p> ||
-
-          valueRoul > 50 &&
+           valueRoul > 50 &&
             <p class='para'>Error value roulette</p> ||
 
           playerMoney !== 0 &&
-            <p class='para'>Round: {round}</p> ||
-          
-          playerMoney !== 12000 &&
-            <p class='para'>Round: {round}</p> ||
-
-          botMoney1 === 12000 &&
-            <p class='para'>You've lose</p> ||
-
-          botMoney2 === 12000 &&
-            <p class='para'>You've lose</p> ||
-
-          botMoney3 === 12000 &&
-            <p class='para'>You've lose</p>
+            <p class='para'>Round: {round}</p>
         }
         <button
           onClick={restart}
-          disabled={money !== 0
-          || botMoney1 === 12000
-          || botMoney2 === 12000
-          || botMoney3 === 12000}>restart</button>
+          disabled={playerMoney !== 0
+          && botMoney1 !== 0
+          && botMoney2 !== 0
+          && botMoney3 !== 0}>restart</button>
       </footer>
   </>
 }

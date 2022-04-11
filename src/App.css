@@ -24,7 +24,6 @@ footer{
 }
 
 main{
-  background-color: #283747;
   color: #45B39D;
   font-size: 17px;
 }
@@ -64,4 +63,9 @@ input{
 .para{
   color: white;
   font-weight: bolder;
+}
+
+body{
+  background-color: #283747;
+
 }
